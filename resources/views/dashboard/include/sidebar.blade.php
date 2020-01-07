@@ -7,7 +7,7 @@
         </div>
         <ul class="nav">
             <li class="nav-item active">
-                <a class="nav-link" href="dashboard.html">
+                <a class="nav-link" href="/admin/dashboard">
                     <i class="nc-icon nc-chart-pie-35"></i>
                     <p>Dashboard</p>
                 </a>
@@ -24,7 +24,7 @@
                     <p>Pemasukan</p>
                 </a>
             </li>
-          
+
         </ul>
     </div>
 </div>

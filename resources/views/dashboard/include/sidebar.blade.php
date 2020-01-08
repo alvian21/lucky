@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link" href="#">
+            <a class="nav-link" href="{{Route('pemasukan')}}">
                     <i class="nc-icon nc-notes"></i>
                     <p>Pemasukan</p>
                 </a>

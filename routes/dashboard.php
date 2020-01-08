@@ -5,4 +5,5 @@ Route::group(['prefix' => 'admin',
          ], function () {
 
             Route::resource('dashboard', 'DashboardController');
+            Route::get('/pengeluaran','PengeluaranController@index')->name('pengeluaran');
 });

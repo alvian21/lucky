@@ -27,7 +27,7 @@ class PemasukanController extends Controller
        $data->qty = $request->get('qty');
        $data->price = $request->get('price');
        $data->save();
-       return back();
+       return redirect()->route('pemasukan');
     }
 
 

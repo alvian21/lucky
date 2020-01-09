@@ -34,7 +34,7 @@
                       <td>{{$row->qty}}</td>
                       <td>{{$row->price}}</td>
                       <td>
-                        <a href="" type="button" class="btn btn-primary">Edit</a>
+                        <button type="button" class="btn btn-primary" id="edit" data-id="{{$row->id}}">Edit</button>
                       <button type="button" class="btn btn-danger delete" data-id="{{$row->id}}" >Hapus</a>
 
                       </td>
@@ -48,7 +48,42 @@
     </div>
 
 </div>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Pemasukan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="kode_barang">Kode Barang</label>
+                  <input type="text" class="form-control" id="kode_barang" >
+                </div>
+                <div class="form-group">
+                    <label for="nama_barang">Nama Barang</label>
+                    <input type="text" class="form-control" id="nama_barang" >
+                </div>
+                  <div class="form-group">
+                    <label for="jumlah_barang">Jumlah Barang</label>
+                    <input type="text" class="form-control" id="jumlah_barang" >
+                </div>
+                <div class="form-group">
+                    <label for="harga_barang">Harga Barang</label>
+                    <input type="text" class="form-control" id="harga_barang" >
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @section('script')
 <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
@@ -74,12 +109,28 @@ $(document).ready(function(){
                     'id': id,
                   },
                   success: function(response){
-
+                    swal("Berhasil!", "Data has been delete", "success");
                     window.setTimeout(function(){window.location.reload()}, 2000);
                   }
                   });
             }
           })
+    });
+
+    $('#edit').on('click', function(){
+        $('#exampleModal').modal('show');
+        var id = $(this).data('id');
+
+        var tr = $(this).closest('tr');
+        var data = tr.children('td').map(function(){
+            return $(this).text();
+        }).get();
+
+       $('#kode_barang').val(data[0]);
+       $('#nama_barang').val(data[1]);
+       $('#jumlah_barang').val(data[2]);
+       $('#harga_barang').val(data[3]);
+
     });
 });
 </script>

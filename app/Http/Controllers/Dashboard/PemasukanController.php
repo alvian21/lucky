@@ -37,4 +37,18 @@ class PemasukanController extends Controller
             Income::find($request->get('id'))->delete();
         }
     }
+
+    public function edit(Request $request)
+    {
+        if($request->get('edit'))
+        {
+           $data = Income::find($request->get('id'));
+           $data->kode = $request->get('kode');
+           $data->name = $request->get('name');
+           $data->qty = $request->get('jumlah');
+           $data->price = $request->get('harga');
+            $data->save();
+         
+        }
+    }
 }

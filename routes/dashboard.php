@@ -11,5 +11,6 @@ Route::group(['prefix' => 'admin',
             Route::get('/pemasukan','PemasukanController@index')->name('pemasukan');
             Route::get('/pemasukan/create','PemasukanController@show')->name('pemasukan.show');
             Route::post('/pemasukan/create','PemasukanController@create')->name('pemasukan.create');
+            Route::post('/pemasukan/edit','PemasukanController@edit')->name('pemasukan.edit');
             Route::get('/pemasukan/delete','PemasukanController@delete')->name('pemasukan.delete');
 });

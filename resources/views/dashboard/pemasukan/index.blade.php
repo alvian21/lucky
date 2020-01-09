@@ -58,29 +58,30 @@
           </button>
         </div>
         <div class="modal-body">
-            <form>
+            <form id="formedit">
                 <div class="form-group">
                   <label for="kode_barang">Kode Barang</label>
-                  <input type="text" class="form-control" id="kode_barang" >
+                  <input type="text" class="form-control" id="kode_barang" name="kode_barang" >
                 </div>
                 <div class="form-group">
                     <label for="nama_barang">Nama Barang</label>
-                    <input type="text" class="form-control" id="nama_barang" >
+                    <input type="text" class="form-control" id="nama_barang" name="nama_barang" >
                 </div>
                   <div class="form-group">
                     <label for="jumlah_barang">Jumlah Barang</label>
-                    <input type="text" class="form-control" id="jumlah_barang" >
+                    <input type="text" class="form-control" id="jumlah_barang" name="jumlah_barang">
                 </div>
                 <div class="form-group">
                     <label for="harga_barang">Harga Barang</label>
-                    <input type="text" class="form-control" id="harga_barang" >
+                    <input type="text" class="form-control" id="harga_barang" name="harga_barang">
                 </div>
-              </form>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" id="savedata">Save changes</button>
         </div>
+    </form>
       </div>
     </div>
   </div>
@@ -120,16 +121,43 @@ $(document).ready(function(){
     $('#edit').on('click', function(){
         $('#exampleModal').modal('show');
         var id = $(this).data('id');
-
         var tr = $(this).closest('tr');
         var data = tr.children('td').map(function(){
             return $(this).text();
         }).get();
-
        $('#kode_barang').val(data[0]);
        $('#nama_barang').val(data[1]);
        $('#jumlah_barang').val(data[2]);
        $('#harga_barang').val(data[3]);
+    //    var form = ('#formedit').serialize();
+       $('#savedata').on('click', function(){
+            var kode = $('#kode_barang').val();
+            var name = $('#nama_barang').val();
+            var jumlah = $('#jumlah_barang').val();
+            var harga = $('#harga_barang').val();
+           var form = {
+            'edit':1,
+            'id':id,
+            'name':name,
+            'jumlah':jumlah,
+            'kode':kode,
+            'harga':harga
+           };
+           $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+                 });
+             $.ajax({
+                url: '{{Route("pemasukan.edit")}}',
+                method: 'POST',
+                data: form,
+                success:function(response){
+                    swal("Berhasil!", "Data has been edited", "success");
+                    window.setTimeout(function(){window.location.reload()}, 1500);
+                }
+            });
+       });
 
     });
 });

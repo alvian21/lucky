@@ -8,18 +8,19 @@
                 <h4 class="card-title">Pengeluaran</h4>
             </div>
             <div class="card-body">
-                <form>
-                    <div class="row">
+            <form method="POST" action="{{Route('pengeluaran.create')}}" >
+                @csrf
+                <div class="row">
                         <div class="col-md-6 ">
                             <div class="form-group">
                                 <label>Kode Barang</label>
-                                <input type="text" class="form-control" placeholder="Tipe" >
+                                <input type="text" class="form-control" name="kode"placeholder="Tipe" >
                             </div>
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-group">
                                 <label>Nama Barang</label>
-                                <input type="text" class="form-control" placeholder="Nama" >
+                                <input type="text" class="form-control" name="name" placeholder="Nama" >
                             </div>
                         </div>
 
@@ -29,14 +30,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jumlah Barang</label>
-                                <input type="email" class="form-control" placeholder="Jumlah">
+                                <input type="text" class="form-control" placeholder="Jumlah" name="qty">
                             </div>
 
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Barang</label>
-                                <input type="email" class="form-control" placeholder="Harga">
+                                <input type="text" class="form-control" placeholder="Harga" name="price">
                             </div>
                         </div>
                     </div>

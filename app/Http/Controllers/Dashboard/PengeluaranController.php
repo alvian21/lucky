@@ -11,4 +11,9 @@ class PengeluaranController extends Controller
     {
         return view('dashboard.pengeluaran.index');
     }
+
+    public function show()
+    {
+        return view('dashboard.pengeluaran.create');
+    }
 }

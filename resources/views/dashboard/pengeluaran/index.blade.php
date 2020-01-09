@@ -20,14 +20,20 @@
             <div class="card-body table-full-width table-responsive">
                 <table class="table table-hover table-striped">
                     <thead>
-                        <tr><th>ID</th>
+                        <tr><th>kode</th>
                         <th>Name</th>
-                        <th>Salary</th>
-                        <th>Country</th>
-                        <th>City</th>
+                        <th>Jumlah</th>
+                        <th>Harga</th>
                     </tr></thead>
                     <tbody>
-                      <tr></tr>
+                        @foreach($data as $row)
+                      <tr>
+                      <td>{{$row->kode}}</td>
+                      <td>{{$row->name}}</td>
+                      <td>{{$row->qty}}</td>
+                      <td>{{$row->price}}</td>
+                      </tr>
+                      @endforeach
                     </tbody>
                 </table>
             </div>

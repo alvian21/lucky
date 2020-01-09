@@ -10,7 +10,8 @@ class PengeluaranController extends Controller
 {
     public function index()
     {
-        return view('dashboard.pengeluaran.index');
+        $data = Expense::all();
+        return view('dashboard.pengeluaran.index',['data'=>$data]);
     }
 
     public function show()

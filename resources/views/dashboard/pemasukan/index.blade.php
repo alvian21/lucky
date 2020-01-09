@@ -51,9 +51,12 @@
 
 @endsection
 @section('script')
+<script src="{{ asset('assets/js/sweetalert.js') }}"></script>
 <script>
 $(document).ready(function(){
-    $('#delete').on('click', function(){
+    $('.delete').on('click', function(){
+        var id = $(this).data('id');
+        console.log(id);
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -64,7 +67,7 @@ $(document).ready(function(){
           .then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: '/admin/delete',
+                    url: '{{ Route("pemasukan.delete") }}',
                     type: 'GET',
                     data: {
                     'delete': 1,
@@ -72,7 +75,7 @@ $(document).ready(function(){
                   },
                   success: function(response){
 
-
+                    window.setTimeout(function(){window.location.reload()}, 2000);
                   }
                   });
             }

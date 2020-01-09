@@ -29,4 +29,12 @@ class PemasukanController extends Controller
        $data->save();
        return back();
     }
+
+
+    public function delete(Request $request)
+    {
+        if($request->get('delete')){
+            Income::find($request->get('id'))->delete();
+        }
+    }
 }

@@ -27,6 +27,27 @@ class PengeluaranController extends Controller
         $data->qty = $request->get('qty');
         $data->price = $request->get('price');
         $data->save();
-        return back();
+        return redirect()->route('pengeluaran');
+    }
+
+    public function delete(Request $request)
+    {
+        if($request->get('delete')){
+            Expense::find($request->get('id'))->delete();
+        }
+    }
+
+    public function edit(Request $request)
+    {
+        if($request->get('edit'))
+        {
+           $data = Expense::find($request->get('id'));
+           $data->kode = $request->get('kode');
+           $data->name = $request->get('name');
+           $data->qty = $request->get('jumlah');
+           $data->price = $request->get('harga');
+            $data->save();
+
+        }
     }
 }

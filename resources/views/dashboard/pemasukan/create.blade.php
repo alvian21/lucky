@@ -5,21 +5,22 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Pengeluaran</h4>
+                <h4 class="card-title">Pemasukan</h4>
             </div>
             <div class="card-body">
-                <form>
+            <form method="POST" action="{{Route('pemasukan.create')}}">
+                @csrf
                     <div class="row">
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label>Nama Barang</label>
-                                <input type="text" class="form-control" placeholder="Nama" >
+                                <label>kode Barang</label>
+                                <input type="text" class="form-control" placeholder="Nama" name="kode" >
                             </div>
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label>Tipe Barang</label>
-                                <input type="text" class="form-control" placeholder="Tipe" >
+                                <label>Nama Barang</label>
+                                <input type="text" class="form-control" placeholder="Tipe" name="name" >
                             </div>
                         </div>
 
@@ -28,14 +29,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jumlah Barang</label>
-                                <input type="email" class="form-control" placeholder="Jumlah">
+                                <input type="text" class="form-control" placeholder="Jumlah" name="qty">
                             </div>
 
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Barang</label>
-                                <input type="email" class="form-control" placeholder="Harga">
+                                <input type="text" class="form-control" placeholder="Harga" name="price">
                             </div>
                         </div>
                     </div>

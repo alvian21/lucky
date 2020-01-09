@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-md-10">
                             <div class="col text-right">
-                                    <a  href="{{ Route('pengeluaran.show') }}" class="btn btn-info" id="">Tambah</a>
+                                    <a  href="{{ Route('pemasukan.show') }}" class="btn btn-info" id="">Tambah</a>
                             </div>
                     </div>
                 </div>
@@ -24,12 +24,22 @@
                         <th>Name</th>
                         <th>Jumlah</th>
                         <th>Harga</th>
+                        <th>Aksi</th>
                     </tr></thead>
                     <tbody>
-
+                        @foreach($data as $row)
                       <tr>
+                      <td>{{$row->kode}}</td>
+                      <td>{{$row->name}}</td>
+                      <td>{{$row->qty}}</td>
+                      <td>{{$row->price}}</td>
+                      <td>
+                        <a href="" type="button" class="btn btn-primary">Edit</a>
+                      <button type="button" class="btn btn-danger delete" data-id="{{$row->id}}" >Hapus</a>
 
+                      </td>
                       </tr>
+                      @endforeach
 
                     </tbody>
                 </table>
@@ -38,5 +48,37 @@
     </div>
 
 </div>
+
+@endsection
+@section('script')
+<script>
+$(document).ready(function(){
+    $('#delete').on('click', function(){
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: '/admin/delete',
+                    type: 'GET',
+                    data: {
+                    'delete': 1,
+                    'id': id,
+                  },
+                  success: function(response){
+
+
+                  }
+                  });
+            }
+          })
+    });
+});
+</script>
 
 @endsection

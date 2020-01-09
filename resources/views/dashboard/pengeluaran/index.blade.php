@@ -103,7 +103,7 @@ $(document).ready(function(){
           .then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: '{{ Route("pemasukan.delete") }}',
+                    url: '{{ Route("pengeluaran.delete") }}',
                     type: 'GET',
                     data: {
                     'delete': 1,
@@ -149,7 +149,7 @@ $(document).ready(function(){
                 }
                  });
              $.ajax({
-                url: '{{Route("pemasukan.edit")}}',
+                url: '{{Route("pengeluaran.edit")}}',
                 method: 'POST',
                 data: form,
                 success:function(response){

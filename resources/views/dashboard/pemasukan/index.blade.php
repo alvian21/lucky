@@ -29,6 +29,7 @@
                     <tbody>
                         @foreach($data as $row)
                       <tr>
+                        <td style="display: none;">{{ $row->id }}</td>
                       <td>{{$row->kode}}</td>
                       <td>{{$row->name}}</td>
                       <td>{{$row->qty}}</td>
@@ -59,6 +60,7 @@
         </div>
         <div class="modal-body">
             <form id="formedit">
+                <input type="hidden" name="id" id="id">
                 <div class="form-group">
                   <label for="kode_barang">Kode Barang</label>
                   <input type="text" class="form-control" id="kode_barang" name="kode_barang" >
@@ -120,17 +122,18 @@ $(document).ready(function(){
 
     $('#edit').on('click', function(){
         $('#exampleModal').modal('show');
-        var id = $(this).data('id');
         var tr = $(this).closest('tr');
         var data = tr.children('td').map(function(){
             return $(this).text();
         }).get();
-       $('#kode_barang').val(data[0]);
-       $('#nama_barang').val(data[1]);
-       $('#jumlah_barang').val(data[2]);
-       $('#harga_barang').val(data[3]);
+        $('#id').val(data[0]);
+       $('#kode_barang').val(data[1]);
+       $('#nama_barang').val(data[2]);
+       $('#jumlah_barang').val(data[3]);
+       $('#harga_barang').val(data[4]);
     //    var form = ('#formedit').serialize();
        $('#savedata').on('click', function(){
+          var id = $('#id').val();
             var kode = $('#kode_barang').val();
             var name = $('#nama_barang').val();
             var jumlah = $('#jumlah_barang').val();
@@ -153,6 +156,7 @@ $(document).ready(function(){
                 method: 'POST',
                 data: form,
                 success:function(response){
+                    $('#exampleModal').modal('hide');
                     swal("Berhasil!", "Data has been edited", "success");
                     window.setTimeout(function(){window.location.reload()}, 1500);
                 }

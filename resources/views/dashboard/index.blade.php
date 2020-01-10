@@ -192,7 +192,7 @@
 
 <script>
 $.ajax({
-url: "/dashboard/chart-expense",
+url: "",
 type: "GET",
 dataType: 'json',
 success: function(rtnData) {

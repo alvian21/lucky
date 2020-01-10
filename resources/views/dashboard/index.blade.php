@@ -2,34 +2,15 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-4">
-        <div class="card ">
-            <div class="card-header ">
-                <h4 class="card-title">Email Statistics</h4>
-                <p class="card-category">Last Campaign Performance</p>
-            </div>
-            <div class="card-body ">
-                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-                <div class="legend">
-                    <i class="fa fa-circle text-info"></i> Open
-                    <i class="fa fa-circle text-danger"></i> Bounce
-                    <i class="fa fa-circle text-warning"></i> Unsubscribe
-                </div>
-                <hr>
-                <div class="stats">
-                    <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-8">
+
+    <div class="col-md-12">
         <div class="card ">
             <div class="card-header ">
                 <h4 class="card-title">Users Behavior</h4>
                 <p class="card-category">24 Hours performance</p>
             </div>
             <div class="card-body ">
-                <div id="chartHours" class="ct-chart"></div>
+                <canvas id="myChart" ></canvas>
             </div>
             <div class="card-footer ">
                 <div class="legend">
@@ -205,4 +186,62 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"> </script>
+
+<script>
+$.ajax({
+url: "/dashboard/chart-expense",
+type: "GET",
+dataType: 'json',
+success: function(rtnData) {
+    $.each(rtnData, function(dataType, data) {
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+});
+        },
+        error: function(rtnData) {
+            alert('error' + rtnData);
+            console.log(rtnData + " asdnjanj");
+        }
+    });
+
+</script>
 @endsection

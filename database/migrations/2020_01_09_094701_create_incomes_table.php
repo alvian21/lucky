@@ -17,6 +17,7 @@ class CreateIncomesTable extends Migration
             $table->bigIncrements('id');
             $table->string('kode');
             $table->string('name');
+            $table->date('date');
             $table->string('qty');
             $table->string('price');
             $table->timestamps();

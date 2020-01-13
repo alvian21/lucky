@@ -40,6 +40,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="date">Tanggal</label>
+                                <input type="date" class="form-control"  name="date">
+                            </div>
+                        </div>
+                    </div>
                 <div  style=" display: flex; align-items: center; justify-content: center;">
                         <button id="Simpan" name="submit" type="submit" class="btn btn-info btn-fill">Simpan</button>
                 </div>

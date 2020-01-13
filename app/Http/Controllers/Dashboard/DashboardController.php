@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Income;
+use App\Expense;
 
 class DashboardController extends Controller
 {
@@ -14,7 +16,33 @@ class DashboardController extends Controller
      */
     public function index()
     {
-       return view('dashboard.index');
+        $income = Income::all();
+        $expense = Expense::all();
+
+        $x = [];
+        foreach($income as $key => $incomes){
+            $inc = Income::where('id',$incomes->id)->first();
+            $array['kode'] = $inc->kode;
+            $array['name'] = $inc->name;
+            $array['price'] = $inc->price;
+            $array['type'] = 'Pemasukan';
+
+            array_push($x, $array);
+        }
+
+        foreach($expense as $key => $expenses){
+            $exp = Expense::where('id',$expenses->id)->first();
+            $array['kode'] = $exp->kode;
+            $array['name'] = $exp->name;
+            $array['price'] = $exp->price;
+            $array['type'] = 'Pengeluaran';
+
+            array_push($x, $array);
+        }
+
+        $data['transaction'] = $x;
+
+       return view('dashboard.index',$data);
     }
 
     /**

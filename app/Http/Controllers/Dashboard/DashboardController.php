@@ -25,6 +25,7 @@ class DashboardController extends Controller
             $array['kode'] = $inc->kode;
             $array['name'] = $inc->name;
             $array['price'] = $inc->price;
+            $array['date'] = $inc->date;
             $array['type'] = 'Pemasukan';
 
             array_push($x, $array);
@@ -35,6 +36,7 @@ class DashboardController extends Controller
             $array['kode'] = $exp->kode;
             $array['name'] = $exp->name;
             $array['price'] = $exp->price;
+            $array['date'] = $exp->date;
             $array['type'] = 'Pengeluaran';
 
             array_push($x, $array);

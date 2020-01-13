@@ -8,6 +8,11 @@
                 <h4 class="card-title">Pemasukan</h4>
             </div>
             <div class="card-body">
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    {{$errors->first()}}
+                </div>
+                @endif
             <form method="POST" action="{{Route('pemasukan.create')}}">
                 @csrf
                     <div class="row">

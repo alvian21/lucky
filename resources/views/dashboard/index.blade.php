@@ -1,7 +1,7 @@
 @extends('dashboard.master')
 
 @section('content')
-<div class="row">
+{{-- <div class="row">
 
     <div class="col-md-12">
         <div class="card ">
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <div class="row">
 
     <div class="col-md-12">
@@ -42,7 +42,7 @@
             <div class="card-body table-full-width table-responsive">
                 <table class="table table-hover table-striped">
                     <thead>
-                        <tr><th>kode</th>
+                        <tr><th>Tanggal</th>
                         <th>Name</th>
                         <th>Jumlah</th>
                         <th>Tipe</th>
@@ -50,7 +50,7 @@
                     <tbody>
                         @foreach($transaction as $row)
                        <tr>
-                       <td>{{$row['kode']}}</td>
+                       <td>{{$row['date']}}</td>
                         <td>{{ $row['name'] }}</td>
                         <td>{{ $row['price'] }}</td>
                          @if($row['type'] == 'Pemasukan')
@@ -70,7 +70,7 @@
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"> </script>
 
-<script>
+{{-- <script>
 $.ajax({
 url: "",
 type: "GET",
@@ -123,5 +123,5 @@ var myChart = new Chart(ctx, {
         }
     });
 
-</script>
+</script> --}}
 @endsection

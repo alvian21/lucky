@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Expense;
+use Validator;
 
 class PengeluaranController extends Controller
 {
@@ -21,13 +22,25 @@ class PengeluaranController extends Controller
 
     public function create(Request $request)
     {
+        $validator = Validator::make(request()->all(), [
+            'kode' => 'required',
+            'name' => "required",
+            'qty' => "required",
+            'price' => 'required',
+        ]);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
         $data = new Expense;
         $data->kode = $request->get('kode');
         $data->name = $request->get('name');
         $data->qty = $request->get('qty');
+        $data->date = $request->get('date');
         $data->price = $request->get('price');
         $data->save();
         return redirect()->route('pengeluaran');
+         }
     }
 
     public function delete(Request $request)

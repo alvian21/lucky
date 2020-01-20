@@ -17,4 +17,6 @@ Route::group(['prefix' => 'admin',
             Route::post('/pemasukan/edit','PemasukanController@edit')->name('pemasukan.edit');
             Route::get('/pemasukan/delete','PemasukanController@delete')->name('pemasukan.delete');
 
+            Route::get('/ajaxdashboard','DashboardController@ajax');
+
 });

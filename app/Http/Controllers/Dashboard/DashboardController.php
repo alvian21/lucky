@@ -112,4 +112,11 @@ class DashboardController extends Controller
     {
         //
     }
+
+
+    public function ajax()
+    {
+        $data = Income::select('price','date')->orderBy('date','ASC')->get();
+        return response()->json(['labels'=>$data]);
+    }
 }

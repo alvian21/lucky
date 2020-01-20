@@ -1,6 +1,7 @@
 <?php
 
 Route::group(['prefix' => 'admin',
+            'middleware'=>'auth',
                 'namespace' => 'Dashboard'
          ], function () {
 

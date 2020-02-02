@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Income;
 use App\Expense;
+use Auth;
 
 class DashboardController extends Controller
 {
@@ -118,5 +119,11 @@ class DashboardController extends Controller
     {
         $data = Income::select('price','date')->orderBy('date','ASC')->get();
         return response()->json(['labels'=>$data]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 }

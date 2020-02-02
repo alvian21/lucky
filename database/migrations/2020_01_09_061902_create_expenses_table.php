@@ -20,6 +20,7 @@ class CreateExpensesTable extends Migration
             $table->date('date');
             $table->string('qty');
             $table->string('price');
+            $table->string('total');
             $table->timestamps();
         });
     }

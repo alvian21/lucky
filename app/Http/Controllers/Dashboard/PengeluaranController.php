@@ -38,6 +38,7 @@ class PengeluaranController extends Controller
         $data->qty = $request->get('qty');
         $data->date = $request->get('date');
         $data->price = $request->get('price');
+        $data->total = $request->get('total');
         $data->save();
         return redirect()->route('pengeluaran');
          }
@@ -62,5 +63,17 @@ class PengeluaranController extends Controller
             $data->save();
 
         }
+    }
+
+    public function total(Request $request)
+    {
+        $harga = 0;
+        $qty = 0;
+        $harga = intval($request->get('harga'));
+        $qty = intval($request->get('qty'));
+
+        $hasil = $harga * $qty;
+        echo $hasil;
+
     }
 }

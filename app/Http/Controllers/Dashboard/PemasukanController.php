@@ -39,6 +39,7 @@ class PemasukanController extends Controller
        $data->date = $request->get('date');
        $data->qty = $request->get('qty');
        $data->price = $request->get('price');
+       $data->total = $request->get('total');
        $data->save();
        return redirect()->route('pemasukan');
         }
@@ -61,8 +62,21 @@ class PemasukanController extends Controller
            $data->name = $request->get('name');
            $data->qty = $request->get('jumlah');
            $data->price = $request->get('harga');
+
             $data->save();
 
         }
+    }
+
+    public function total(Request $request)
+    {
+        $harga = 0;
+        $qty = 0;
+        $harga = intval($request->get('harga'));
+        $qty = intval($request->get('qty'));
+
+        $hasil = $harga * $qty;
+        echo $hasil;
+
     }
 }

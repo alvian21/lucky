@@ -14,7 +14,7 @@
                         <span class="d-lg-none">Dashboard</span>
                     </a>
                 </li>
-               
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nc-icon nc-zoom-split"></i>
@@ -42,7 +42,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
+                <a class="nav-link" href="{{Route('logoutlogin')}}">
                         <span class="no-icon">Log out</span>
                     </a>
                 </li>

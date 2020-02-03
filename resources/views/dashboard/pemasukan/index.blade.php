@@ -35,7 +35,7 @@
                       <td>{{$row->qty}}</td>
                       <td>{{$row->price}}</td>
                       <td>
-                        <button type="button" class="btn btn-primary" id="edit" data-id="{{$row->id}}">Edit</button>
+                        <button type="button" class="btn btn-primary edit" id="edit" data-id="{{$row->id}}">Edit</button>
                       <button type="button" class="btn btn-danger delete" data-id="{{$row->id}}" >Hapus</a>
 
                       </td>
@@ -121,7 +121,7 @@ $(document).ready(function(){
           })
     });
 
-    $('#edit').on('click', function(){
+    $('.edit').on('click', function(){
         $('#exampleModal').modal('show');
         var tr = $(this).closest('tr');
         var data = tr.children('td').map(function(){

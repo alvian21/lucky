@@ -89,6 +89,7 @@
   </div>
 @endsection
 @section('script')
+
 <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
 <script>
 $(document).ready(function(){

@@ -15,6 +15,10 @@ class CreateIncomesTable extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('expense_id');
+            $table->foreign('expense_id')->references('id')->on('expenses')->onDelete('cascade');
             $table->string('kode');
             $table->string('name');
             $table->date('date');

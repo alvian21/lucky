@@ -16,6 +16,7 @@ Route::group(['prefix' => 'admin',
             Route::get('/pemasukan/create','PemasukanController@show')->name('pemasukan.show');
             Route::post('/pemasukan/create','PemasukanController@create')->name('pemasukan.create');
             Route::post('/pemasukan/create/total','PemasukanController@total');
+            Route::post('/pemasukan/create/fetchjumlah','PemasukanController@fetchjumlah');
             Route::post('/pemasukan/edit','PemasukanController@edit')->name('pemasukan.edit');
             Route::get('/pemasukan/delete','PemasukanController@delete')->name('pemasukan.delete');
 

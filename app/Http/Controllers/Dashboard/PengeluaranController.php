@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Expense;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class PengeluaranController extends Controller
@@ -33,6 +34,7 @@ class PengeluaranController extends Controller
             return back()->withErrors($validator->errors());
         } else {
         $data = new Expense;
+        $data->user_id = Auth::user()->id;
         $data->kode = $request->get('kode');
         $data->name = $request->get('name');
         $data->qty = $request->get('qty');

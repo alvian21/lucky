@@ -6,8 +6,8 @@
     <div class="col-md-12">
         <div class="card ">
             <div class="card-header ">
-                <h4 class="card-title">Pemasukan</h4>
-                <p class="card-category">24 Hours performance</p>
+                <h4 class="card-title">Laba</h4>
+
             </div>
             <div class="card-body ">
                 <canvas id="myChart" ></canvas>
@@ -73,7 +73,7 @@ success: function(rtnData) {
                 rtnData['labels'].forEach((res) => {
                     var coba = new Date(res['date']).toLocaleString();
                     var coba2 = new Date(res['date']);
-                    var total = res['price'];
+                    var total = res['data'];
                     var x = {};
                     var y = {};
                     var jumlah = {
@@ -92,7 +92,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: aku,
         datasets: [{
-            label: 'Pemasukan',
+            label: 'Laba',
             data: hello,
             backgroundColor:
                 'rgba(255, 99, 132, 0.2)',

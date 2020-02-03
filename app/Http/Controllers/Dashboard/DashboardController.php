@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Income;
 use App\Expense;
+use App\Data;
 use Auth;
 
 class DashboardController extends Controller
@@ -117,7 +118,7 @@ class DashboardController extends Controller
 
     public function ajax()
     {
-        $data = Income::select('price','date')->orderBy('date','ASC')->get();
+        $data = Data::select('data','date')->orderBy('date','ASC')->get();
         return response()->json(['labels'=>$data]);
     }
 

@@ -5,44 +5,53 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Income;
+use Illuminate\Support\Facades\Auth;
+use App\Expense;
 use Validator;
-
+use App\Data;
 
 class PemasukanController extends Controller
 {
     public function index()
     {
         $data = Income::all();
+
         return view('dashboard.pemasukan.index',['data'=>$data]);
     }
 
     public function show()
     {
-        return view('dashboard.pemasukan.create');
+        $exp = Expense::all();
+        return view('dashboard.pemasukan.create',['exp'=>$exp]);
     }
 
     public function create(Request $request)
     {
-        $validator = Validator::make(request()->all(), [
-            'kode' => 'required',
-            'name' => "required",
-            'qty' => "required",
-            'price' => 'required',
-        ]);
-
-        if($validator->fails()) {
-            return back()->withErrors($validator->errors());
-        } else {
+        $new = new Data;
        $data = new Income;
+       $exp = Expense::find($request->get('id'));
+       $data->user_id = Auth::user()->id;
+       $data->expense_id = $exp->id;
        $data->kode = $request->get('kode');
-       $data->name = $request->get('name');
+       $data->name = $exp->name;
        $data->date = $request->get('date');
        $data->qty = $request->get('qty');
        $data->price = $request->get('price');
        $data->total = $request->get('total');
        $data->save();
-       return redirect()->route('pemasukan');
-        }
+       if($data->save()){
+           $new->user_id = $data->user_id;
+           $new->name = $data->name;
+           $new->data = $request->get('total') - $exp->total;
+           $new->date = $request->get('date');
+           $new->save();
+           return $new;
+
+
+       }
+
+
+
     }
 
 
@@ -78,5 +87,12 @@ class PemasukanController extends Controller
         $hasil = $harga * $qty;
         echo $hasil;
 
+    }
+
+    public function fetchjumlah(Request $request)
+    {
+        $data = Expense::find($request->get('id'));
+
+        echo $data->qty;
     }
 }

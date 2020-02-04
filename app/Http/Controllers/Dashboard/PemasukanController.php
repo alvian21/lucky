@@ -83,7 +83,6 @@ class PemasukanController extends Controller
         $qty = 0;
         $harga = intval($request->get('harga'));
         $qty = intval($request->get('qty'));
-
         $hasil = $harga * $qty;
         echo $hasil;
 

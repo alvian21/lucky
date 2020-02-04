@@ -19,7 +19,12 @@
                     <p>Pemasukan</p>
                 </a>
             </li>
-
+            <li>
+                <a class="nav-link" href="{{Route('data')}}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Data</p>
+                    </a>
+            </li>
         </ul>
     </div>
 </div>

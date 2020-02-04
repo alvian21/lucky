@@ -6,6 +6,8 @@ Route::group(['prefix' => 'admin',
          ], function () {
 
            Route::get('/dashboard','DashboardController@index');
+           Route::get('/data','DataController@index')->name('data');
+           Route::get('/data/delete','DataController@delete');
             Route::get('/pengeluaran','PengeluaranController@index')->name('pengeluaran');
             Route::get('/pengeluaran/create','PengeluaranController@show')->name('pengeluaran.show');
             Route::post('/pengeluaran/create','PengeluaranController@create')->name('pengeluaran.create');

@@ -9,11 +9,7 @@
                     <div class="col-md-3">
                             <h4 class="text-black">Data laba dan rugi</h4>
                     </div>
-                    <div class="col-md-9">
-                            <div class="col text-right">
-                                    <a  href="{{ Route('pemasukan.show') }}" class="btn btn-info" id="">Tambah</a>
-                            </div>
-                    </div>
+                  
                 </div>
 
             </div>
